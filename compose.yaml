@@ -1,0 +1,8 @@
+services:
+  py:
+    image: python:alpine
+    working_dir: /root
+    volumes:
+      - .:/root
+    entrypoint:
+      - python
