@@ -1,4 +1,17 @@
+import sqlite3
+
 from add_book import add_book
+from list_books import list_books
+
+with open('init.sql', 'r') as sql_file:
+    init_script = sql_file.read()
+
+# Initialize SQLite DB with data
+con = sqlite3.connect('db.sqlite3')
+cur = con.cursor()
+cur.executescript(init_script)
+con.commit()
+con.close()
 
 features = ['-- Quit --', 'Add New Book', 'View All Books', 'Search Books']
 
@@ -27,25 +40,43 @@ match choice:
         print('Thanks!')
         exit(0)
     case '1':
-        # title = input('Title: ')
-        # isbn = input('ISBN: ')
+        title = input('Title: ')
+        isbn = input('ISBN: ')
         year = input('Year: ')
         price = input('Price: $')
         quantity = input('Quantity: ')
+
+        # Authors:
+        # 1. Associate an Existing Author
+        # 2. Create New Author
+
+        # If 1 is chosen, show all authors from DB.
+        # If 2 is chosen, prompt to get author's name.
+
+        author_name = input('Author\'s Name: ')
         
-        authors = []
+        # authors = []
 
         # ...
 
         info = {
-            # 'title': title,
-            # 'isbn': isbn,
+            'title': title,
+            'isbn': isbn,
             'year': year,
             'price': price,
-            'quantity': quantity
+            'quantity': quantity,
+            'author': {
+                'name': author_name
+            }
         }
         
         try:
             add_book(info)
+        except Exception as e:
+            print(e)
+
+    case '2':
+        try:
+            list_books()
         except Exception as e:
             print(e)

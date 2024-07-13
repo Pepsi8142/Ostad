@@ -36,8 +36,7 @@ application and show your output in the terminal. Don’t use AI. It’ll be har
 ## NOTES
 
 1. The project must contain multiple files for multiple features.
-2. You must add a simple architecture for the application using any tool you prefer. You can also draw in hand and put that image into the project folder. Better, if you can show your
-   plans drawing and such.
+2. You must add a simple architecture for the application using any tool you prefer. You can also draw in hand and put that image into the project folder. Better, if you can show your plans drawing and such.
 3. The features must be contained within functions.
 4. You mustn’t use any 3rd party library for this project. Use only the basic Python knowledge you’ve learned so far from this course.
 5. Use an infinite menu with an exit option to make the application user-friendly. All the features must be usable from the menu.
