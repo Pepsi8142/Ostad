@@ -1,9 +1,7 @@
-import sqlite3
+from _db import connection, cursor
 
 def add_book(info):
-    con = sqlite3.connect('db.sqlite3')
-    cur = con.cursor()
-    res = cur.execute(
+    res = cursor.execute(
         'INSERT INTO books (title, isbn, year, price, quantity) VALUES (:title, :isbn, :year, :price, :quantity)',
         {
             'title': info['title'],
@@ -13,17 +11,17 @@ def add_book(info):
             'quantity': info['quantity']
         }
     )
-    con.commit()
+    connection.commit()
     book_id = res.lastrowid
 
     for author_id in info["authors"]:
-        res = cur.execute(
+        cursor.execute(
             'INSERT INTO books_authors (book_id, author_id) VALUES (:book_id, :author_id)',
             {
                 'author_id': author_id,
                 'book_id': book_id
             }
         )
-    con.commit()
+    connection.commit()
 
-    print('Book has been added successfully!')
+    print('\nBook has been added successfully!')

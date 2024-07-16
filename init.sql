@@ -4,10 +4,7 @@ CREATE TABLE IF NOT EXISTS books (
     isbn TEXT NOT NULL UNIQUE,
     year INTEGER NOT NULL,
     price NUMERIC NOT NULL,
-    quantity INTEGER NOT NULL,
-    lender_id INTEGER NULL,
-    FOREIGN KEY(lender_id) REFERENCES users(id) ON DELETE
-    SET NULL
+    quantity INTEGER NOT NULL
 );
 CREATE TABLE IF NOT EXISTS authors (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -21,4 +18,9 @@ CREATE TABLE IF NOT EXISTS books_authors (
 CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS books_users (
+    book_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    PRIMARY KEY(book_id, user_id)
 );
