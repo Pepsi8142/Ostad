@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS books (
     title TEXT NOT NULL,
     isbn TEXT NOT NULL UNIQUE,
     year INTEGER NOT NULL,
-    price INTEGER NOT NULL,
+    price NUMERIC NOT NULL,
     quantity INTEGER NOT NULL,
     lender_id INTEGER NULL,
     FOREIGN KEY(lender_id) REFERENCES users(id) ON DELETE
